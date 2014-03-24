@@ -1,0 +1,14 @@
+# Composer
+
+/bootstrap/compiled.php
+/vendor
+composer.phar
+
+# Environment
+
+.env.local.php
+.env.php
+
+# OS
+.DS_Store
+Thumbs.db
