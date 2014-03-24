@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://mcm.iwader.co.uk/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -53,19 +53,6 @@ return array(
 	*/
 
 	'locale' => 'en',
-
-	/*
-	|--------------------------------------------------------------------------
-	| Encryption Key
-	|--------------------------------------------------------------------------
-	|
-	| This key is used by the Illuminate encrypter service and should be set
-	| to a random, 32 character string, otherwise these encrypted strings
-	| will not be safe. Please do this before deploying an application!
-	|
-	*/
-
-	'key' => 'LmMNSvSoJSNhsX1EvO6jHZ16UnP9gtmX',
 
 	/*
 	|--------------------------------------------------------------------------

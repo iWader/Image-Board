@@ -28,15 +28,6 @@ return array(
 
 	'connections' => array(
 
-		'production' => array(
-			'host'      => '',
-			'username'  => '',
-			'password'  => '',
-			'key'       => '',
-			'keyphrase' => '',
-			'root'      => '/var/www',
-		),
-
 	),
 
 	/*
@@ -51,8 +42,6 @@ return array(
 	*/
 
 	'groups' => array(
-
-		'web' => array('production')
 
 	),
 
