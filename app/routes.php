@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', ['uses' => 'DefaultController@index']);
+
+Route::group(['prefix' => 'admin'], function()
 {
-	return View::make('hello');
+
+	Route::get('/login', ['uses' => 'AdminController@login']);
+	Route::post('/login', ['uses' => 'AdminController@login_post']);
+
 });
