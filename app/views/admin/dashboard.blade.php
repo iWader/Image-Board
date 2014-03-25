@@ -34,23 +34,25 @@ Dashboard
         <tr>
           <th>ID</th>
           <th>Uploaded At</th>
+          <th>Name</th>
           <th>Filename</th>
           <th>Filesize</th>
           <th>Actions</th>
         </tr>
 
-        @foreach(Photo::take(10)->orderBy('created_at', 'DESC') as $photo)
+        @foreach(Photo::take(10)->orderBy('created_at', 'DESC')->get() as $photo)
           <tr>
             <td>{{ $photo->id }}</td>
             <td>{{ $photo->created_at->toDayDateTimeString() }}</td>
+            <td>{{{ $photo->name }}}
             <td>{{ $photo->filename }}</td>
             <td>{{ format_bytes($photo->filesize) }}</td>
             <td>
-              <a href="{{ URL::to('/admin/edit/' . $photo->id) }}" class="btn btn-info">Edit</a>
               @if($photo->deleted_at == null)
-                <a href="{{ URL::to('/admin/delete/' . $photo->id) }}" class="btn btn-danger">Delete</a>
+                <a href="{{ URL::to('/admin/photo/edit/' . $photo->id) }}" class="btn btn-info">Edit</a>
+                <a href="{{ URL::to('/admin/photo/delete/' . $photo->id) }}" class="btn btn-danger">Delete</a>
               @else
-                <a href="{{ URL::to('/admin/restore/' . $photo->id) }}" class="btn btn-success">Restore</a>
+                <a href="{{ URL::to('/admin/photo/restore/' . $photo->id) }}" class="btn btn-success">Restore</a>
               @endif
             </td>
           </tr>

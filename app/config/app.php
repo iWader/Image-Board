@@ -17,6 +17,29 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Upload Extensions
+	|--------------------------------------------------------------------------
+	|
+	| Array of file extensions we should accept for uploading
+	|
+	*/
+
+	'upload_extensions' => ['jpg', 'jpeg', 'png', 'svg', 'bmp'],
+
+	/*
+	|--------------------------------------------------------------------------
+	| Upload Destination
+	|--------------------------------------------------------------------------
+	|
+	| The filepath, relative to public_path() where we should store
+	| uploaded files. (No trailing slash)
+	|
+	*/
+
+	'upload_destination' => 'photos',
+
+	/*
+	|--------------------------------------------------------------------------
 	| Application URL
 	|--------------------------------------------------------------------------
 	|
