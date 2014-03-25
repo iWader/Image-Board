@@ -1,0 +1,21 @@
+body {
+  background: #EBEBEB;
+}
+
+.content {
+  margin-top: 70px;
+}
+
+  .content .info-block {
+    border: 1px solid #D4D4D4;
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 4px;
+    background: #fff;
+  }
+
+    .content .info-block span {
+      display: block;
+      font-size: 2em;
+      font-weight: bold;
+    }

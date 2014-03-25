@@ -19,4 +19,9 @@ class AdminController extends \BaseController {
 		return Redirect::back()->withErrors(new MessageBag(['Could not find a user with that email and password combination. Please try again']));
 	}
 
+	public function dashboard()
+	{
+		return View::make('admin.dashboard');
+	}
+
 }
