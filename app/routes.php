@@ -12,6 +12,7 @@
 */
 
 Route::get('/', ['uses' => 'DefaultController@index']);
+Route::post('/load-content', ['uses' => 'DefaultController@load_content']);
 
 Route::group(['prefix' => 'admin'], function()
 {
