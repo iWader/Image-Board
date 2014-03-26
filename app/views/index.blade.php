@@ -1,9 +1,15 @@
 @extends('template')
 
 @section('page-title')
+MCM Expo Birmingham
 @endsection
 
 @section('head')
+<style type="text/css" media="screen">
+  body {
+    background: #D4D4D4;
+  }
+</style>
 @endsection
 
 @section('javascript')
@@ -12,6 +18,7 @@
 <script type="text/javascript">
   var container;
   var doingAjax = false;
+  var initialLoad = true;
   var ids = [];
 
   function loadContent()
@@ -22,7 +29,7 @@
     doingAjax = true;
 
     $.post('{{ URL::to('/load-content') }}', {
-      'ids': ids
+      'ids': ids,
     }).success(function(data) {
 
       $.each(data, function(i, item) {
@@ -31,13 +38,17 @@
         ids.push(item.id);
 
         div.imagesLoaded(function() {
-          container.append(div).fadeIn(1500);
+          container.append(div).fadeIn(3000);
           container.masonry('appended', div).masonry();
-
-          doingAjax = false;
         });
 
       });
+
+      if (initialLoad === true) {
+        setTimeout(function() { doingAjax = false; initialLoad = false; loadContent(); }, 1000);
+      } else {
+        doingAjax = false;
+      }
 
     }).fail(function() {
       console.log('Error loading more content, maybe there is no more content available to load?');
@@ -54,15 +65,13 @@
         itemSelector: '.photo'
       });
 
-      masonryInit = true;
-
-      if ($('#masonry').height() < $(window).height()) {
+      if (initialLoad === true && $('#masonry').height() < $(window).height()) {
         loadContent();
       }
 
       container.masonry('on', 'layoutComplete', function(masonry, items)
       {
-        if ($('#masonry').height() < $(window).height()) {
+        if ((initialLoad === false || doingAjax == false) && $('#masonry').height() < $(window).height()) {
           loadContent();
         }
       });
