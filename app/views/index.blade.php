@@ -10,10 +10,6 @@ MCM Expo Birmingham
   body {
     background: #D4D4D4;
   }
-
-  .fancybox .img-responsive {
-    max-width: none;
-  }
 </style>
 @endsection
 
