@@ -4,6 +4,19 @@ use Illuminate\Support\MessageBag;
 
 class PhotoController extends \BaseController {
 
+	protected $imagine;
+
+	public function __construct()
+	{
+		if (!$this->imagine) {
+			if (class_exists('Imagick')) {
+				$this->imagine = new \Imagine\Imagick\Imagine();
+			} else {
+				$this->imagine = new \Imagine\Gd\Imagine();
+			}
+		}
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -39,6 +52,13 @@ class PhotoController extends \BaseController {
 				return Response::json(['success' => false, 'error' => 'We do not accept this file type'], 400);
 
 			$filename = 'photo-' . Str::slug(Input::file('photo')->getClientOriginalName()) . '.' . Input::file('photo')->getClientOriginalExtension();
+
+			$resize = new \Imagine\Image\Box(Config::get('app.resize_width'), Config::get('app.resize_height'));
+			$mode = \Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
+
+			$this->imagine->open(Input::file('photo')->getRealPath())
+										->thumbnail($size, $mode)
+										->save(public_path() . '/' . Config::get('app.upload_destination') . '/resized/'  . $filename);
 
 			Input::file('photo')->move(public_path() . '/' . Config::get('app.upload_destination'), $filename);
 

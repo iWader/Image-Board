@@ -40,6 +40,20 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Resize dimentions
+	|--------------------------------------------------------------------------
+	|
+	| The dimentions (in pixels) to resize the images too. A full size image
+	| will be stored, but we'll serve smaller images when not viewed in the
+	| fancybox.
+	|
+	*/
+
+	'resize_height' => 600,
+	'resize_width'  => 300,
+
+	/*
+	|--------------------------------------------------------------------------
 	| Application URL
 	|--------------------------------------------------------------------------
 	|
