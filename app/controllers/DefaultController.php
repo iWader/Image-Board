@@ -11,7 +11,7 @@ class DefaultController extends BaseController {
 	{
 		$ids = (Input::has('ids') ? Input::get('ids') : [0]);
 
-		return Response::json(Photo::whereNotIn('id', $ids)->take(5)->get());
+		return Response::json(Photo::whereNotIn('id', $ids)->take(1)->get());
 	}
 
 }
