@@ -69,3 +69,7 @@ body {
         .content .upload-area .dz-preview .dz-error-message {
           display: none;
         }
+        
+        .content .upload-area .dz-preview.dz-error .dz-error-message {
+            display: block;
+        }
