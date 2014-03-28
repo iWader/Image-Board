@@ -13,6 +13,6 @@ return array(
 	|
 	*/
 
-	'domain' => 'localhost',
+	'domain' => null,
 
 );
