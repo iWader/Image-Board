@@ -5,9 +5,14 @@ MCM Expo Birmingham
 @endsection
 
 @section('head')
+<link rel="stylesheet" href="{{ URL::asset('/assets/css/fancybox/jquery.fancybox.css') }}" type="text/css" media="screen">
 <style type="text/css" media="screen">
   body {
     background: #D4D4D4;
+  }
+
+  .fancybox .img-responsive {
+    max-width: none;
   }
 </style>
 @endsection
@@ -15,6 +20,16 @@ MCM Expo Birmingham
 @section('javascript')
 <script type="text/javascript" src="{{ URL::asset('/assets/js/masonry.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('/assets/js/imagesloaded.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('/assets/js/fancybox/jquery.fancybox.pack.js') }}"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('a:has(img)').fancybox({
+      'hideOnContentClick': true,
+      'autoScale': false,
+      'autoDimensions': false
+    });
+  });
+</script>
 <script type="text/javascript">
   var container;
   var doingAjax = false;
@@ -33,7 +48,7 @@ MCM Expo Birmingham
     }).success(function(data) {
 
       $.each(data, function(i, item) {
-        var div = $('<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 photo" data-id="' + item.id + '"><img class="img-responsive" alt="' + item.name + '" src="{{ URL::to('/photos') }}/' + item.filename + '"></div>');
+        var div = $('<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 photo" data-id="' + item.id + '"><a href="{{ URL::to('/photos') }}/' + item.filename + '"><img class="img-responsive" alt="' + item.name + '" src="{{ URL::to('/photos') }}/' + item.filename + '"></a></div>');
 
         ids.push(item.id);
 
