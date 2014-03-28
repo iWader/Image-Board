@@ -44,7 +44,7 @@ MCM Expo Birmingham
     }).success(function(data) {
 
       $.each(data, function(i, item) {
-        var div = $('<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 photo" data-id="' + item.id + '"><a href="{{ URL::to('/photos') }}/' + item.filename + '"><img class="img-responsive" alt="' + item.name + '" src="{{ URL::to('/photos') }}/' + item.filename + '"></a></div>');
+        var div = $('<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 photo" data-id="' + item.id + '"><a href="{{ URL::to('/photos') }}/' + item.filename + '"><img class="img-responsive" alt="' + item.name + '" src="{{ URL::to('/photos/resized') }}/' + item.filename + '"></a></div>');
 
         ids.push(item.id);
 

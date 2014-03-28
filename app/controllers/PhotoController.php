@@ -58,7 +58,7 @@ class PhotoController extends \BaseController {
 
 			$this->imagine->open(Input::file('photo')->getRealPath())
 										->thumbnail($resize, $mode)
-										->save(public_path() . '/' . Config::get('app.upload_destination') . '/resized/'  . $filename . '.' . Input::file('photo')->getClientOriginalExtension());
+										->save(public_path() . '/' . Config::get('app.upload_destination') . '/resized/'  . $filename);
 
 			Input::file('photo')->move(public_path() . '/' . Config::get('app.upload_destination'), $filename);
 
