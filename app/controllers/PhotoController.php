@@ -45,7 +45,7 @@ class PhotoController extends \BaseController {
 	 * @return Response
 	 */
 	public function store()
-	{
+	{    
 		if (Input::hasFile('photo')) {
 
 			if (!in_array(Input::file('photo')->getClientOriginalExtension(), Config::get('app.upload_extensions')))
@@ -57,8 +57,8 @@ class PhotoController extends \BaseController {
 			$mode = \Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND;
 
 			$this->imagine->open(Input::file('photo')->getRealPath())
-										->thumbnail($size, $mode)
-										->save(public_path() . '/' . Config::get('app.upload_destination') . '/resized/'  . $filename);
+										->thumbnail($resize, $mode)
+										->save(public_path() . '/' . Config::get('app.upload_destination') . '/resized/'  . $filename . '.' . Input::file('photo')->getClientOriginalExtension());
 
 			Input::file('photo')->move(public_path() . '/' . Config::get('app.upload_destination'), $filename);
 
