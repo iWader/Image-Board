@@ -71,7 +71,7 @@ MCM Expo Birmingham
 
       container.masonry('on', 'layoutComplete', function(masonry, items)
       {
-        if ((initialLoad === false || doingAjax == false) && $('#masonry').height() < $(window).height()) {
+        if ((initialLoad === false && $('#masonry').height() < $(window).height()) || ($(window).scrollTop() + $(window).height()) == $(document).height()) {
           loadContent();
         }
       });
