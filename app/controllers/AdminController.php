@@ -13,7 +13,7 @@ class AdminController extends \BaseController {
 	{
 		if (Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')]))
 		{
-			return Redirect::intended('dashboard');
+			return Redirect::intended('admin/dashboard');
 		}
 
 		return Redirect::back()->withErrors(new MessageBag(['Could not find a user with that email and password combination. Please try again']));
