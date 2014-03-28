@@ -13,6 +13,6 @@ return array(
 	|
 	*/
 
-	'domain' => 'image-board.dev',
+	'domain' => null,
 
 );
